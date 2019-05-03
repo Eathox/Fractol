@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 16:21:52 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:30:54 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 	togglehelddown(keycode, ftl);
 	if (HELDOWN_CTRL && keycode == KEY_C)
 	{
+		mlx_destroy_window(ftl->mlx, ftl->mlx_window);
 		ft_eventclose(ftl);
 		return (0);
 	}
