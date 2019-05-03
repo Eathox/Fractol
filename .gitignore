@@ -1,0 +1,16 @@
+a.out
+libft.a
+libftprintf.a
+test/
+todo.txt
+test_lib
+testmachine\ 2.c
+testmachine.c
+.DS_Store
+*.o
+objects
+TODO
+test
+*.a
+*.dSYM
+fractol
