@@ -21,7 +21,7 @@ static t_ftl	*freeret(t_ftl **ftl, char ***ftls, void ***fncs, char *message)
 	return (*ftl);
 }
 
-static char		**fractolsnew(char ***ftls, void ***fncs)
+static char		**prepare(char ***ftls, void ***fncs)
 {
 	int		size;
 
@@ -37,6 +37,7 @@ static char		**fractolsnew(char ***ftls, void ***fncs)
 		return (NULL);
 	(*fncs)[0] = NULL; //TODO ADD Julia FUNCTION HERE
 	(*fncs)[1] = NULL; //TODO ADD Mandelbrot FUNCTION HERE
+	//TODO ADD THHIRD SET
 	return (*ftls);
 }
 
@@ -52,7 +53,7 @@ t_ftl			*ft_getfractols(int ac, char **av, t_ftl **ftl)
 	str = NULL;
 	ftls = NULL;
 	fncs = NULL;
-	if (fractolsnew(&ftls, &fncs) == NULL)
+	if (prepare(&ftls, &fncs) == NULL)
 		return (freeret(ftl, &ftls, &fncs, "Ft_getfractols: Malloc error\n"));
 	while (i < ac)
 	{
