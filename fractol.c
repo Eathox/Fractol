@@ -25,5 +25,6 @@ int		main(int ac, char **av)
 	ft_strarrsort(av, &ft_strarrsortac);
 	if (ft_getfractols(ac, av, &ftl) == NULL)
 		return (0);
+	ft_ftldel(&ftl);
 	return (0);
 }
