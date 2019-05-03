@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 01:31:17 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:49:15 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:27:09 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ static void		addftl(t_ftl **ftl, t_ftl *new)
 	if (*ftl == NULL)
 	{
 		*ftl = new;
+		new->head = *ftl;
 		return ;
 	}
+	new->head = *ftl;
 	while (current->next != NULL)
 		current = current->next;
 	current->next = new;

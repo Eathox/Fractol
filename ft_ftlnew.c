@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 11:38:14 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:15:49 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:24:02 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 	new->pool = pool;
 	new->name = name;
 	new->next = NULL;
+	new->head = NULL;
 	new->helddown = 0;
+	new->active = TRUE;
 	new->fractol_fnc = fnc;
 	new->mlx_window = mlx_new_window(new->mlx, WINDOW_X, WINDOW_Y, new->name);
 	if (new->mlx_window == NULL)

@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 16:03:59 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:22:03 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	togglehelddown(int mousecode, t_ftl *ftl)
 
 int			ft_eventmouseup(int mousecode, int x, int y, t_ftl *ftl)
 {
+	if (ftl->active == FALSE)
+		return (0);
 	togglehelddown(mousecode, ftl);
 	(void)x;
 	(void)y;

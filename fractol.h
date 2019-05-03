@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:56:12 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:23:56 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ typedef struct	s_ftl
 	char			*name;
 	void			(*fractol_fnc)();
 	char			helddown;
+	char			active;
 	struct s_ftl	*next;
+	struct s_ftl	*head;
 }				t_ftl;
 
 int			ft_eventclose(t_ftl *ftl);

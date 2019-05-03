@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 16:05:50 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:21:36 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int	togglehelddown(int keycode, t_ftl *ftl)
 
 int			ft_eventkeyup(int keycode, t_ftl *ftl)
 {
+	if (ftl->active == FALSE)
+		return (0);
 	togglehelddown(keycode, ftl);
 	return (0);
 }
