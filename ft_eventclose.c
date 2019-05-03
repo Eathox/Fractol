@@ -17,6 +17,7 @@ int			ft_eventclose(t_ftl *ftl)
 	t_ftl	*current;
 
 	ftl->active = FALSE;
+	ftl->mlx_window = NULL;
 	current = ftl->head;
 	while (current != NULL)
 	{
