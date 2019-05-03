@@ -14,16 +14,47 @@
 
 static t_ftl	*freeret(t_ftl **ftl, char *error)
 {
-	ft_memdel((void **)ftl); //TODO add FTL_DEL
+	ft_ftldel(ftl);
 	ft_puterror(error);
 	return (NULL);
 }
 
-t_ftl		*ft_addfractol(t_ftl **ftl, void *fnc)
+static void		addftl(t_ftl **ftl, t_ftl *new)
 {
-	//TODO adds new t_ftl to ftl
-	(void)ftl;
-	(void)fnc;
-	(void)&freeret;
+	t_ftl	*current;
+
+	current = *ftl;
+	if (*ftl == NULL)
+	{
+		*ftl = new;
+		return ;
+	}
+	while (current->next != NULL)
+		current = current->next;
+	current->next = new;
+}
+
+t_ftl			*ft_addfractol(t_ftl **ftl, char *name, void *fnc)
+{
+	void	*mlx;
+	t_pool	*pool;
+	t_ftl	*new;
+
+	if (*ftl == NULL)
+	{
+		mlx = mlx_init();
+		pool = ft_poolcreate(POOL_SIZE);
+	}
+	else
+	{
+		mlx = (*ftl)->mlx;
+		pool = (*ftl)->pool;
+	}
+	if (pool == NULL || mlx == NULL)
+		return (freeret(ftl, "Ft_addfractol: Malloc error\n"));
+	new = ft_ftlnew(mlx, pool, name, fnc);
+	if (new == NULL)
+		return (freeret(ftl, "Ft_ftlnew: Malloc error\n"));
+	addftl(ftl, new);
 	return (NULL);
 }

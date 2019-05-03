@@ -14,20 +14,26 @@
 # define FT_FRACTOL_H
 
 # include "libft/includes/libft.h"
-# define MESSAGE_USAGE "./fractol <name of fractol (add lst of fractols)>\n"
 
-//TODO add FTL_DEL
+# define MESSAGE_USAGE "./fractol <name of fractol (add lst of fractols)>\n"
+# define WINDOW_X	512
+# define WINDOW_Y	512
+# define POOL_SIZE	8
+
 typedef struct	s_ftl
 {
-	void			*mlx_int;
+	void			*mlx;
 	void			*mlx_window;
 	void			*mlx_image;
 	t_pool			*pool;
+	char			*name;
 	void			(*fractol_fnc)();
 	struct s_ftl	*next;
 }				t_ftl;
 
 t_ftl		*ft_getfractols(int ac, char **av, t_ftl **fractol);
-t_ftl		*ft_addfractol(t_ftl **ftl, void *fnc);
+t_ftl		*ft_addfractol(t_ftl **ftl, char *name, void *fnc);
+t_ftl 		*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc);
+void		ft_ftldel(t_ftl **ftl);
 
 #endif

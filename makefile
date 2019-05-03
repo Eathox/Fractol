@@ -36,13 +36,18 @@ LIBFT = $(LIBFTPATH)/libft.a
 INCLUDES = $(LIBFTPATH)/includes/
 NAME = fractol
 
-SRCS = getfractols addfractol
+SRCS = getfractols addfractol ftldel ftlnew
 SRCS := $(NAME).c $(SRCS:%=ft_%.c)
 
 SRCS := $(sort $(SRCS))
 OBJS = $(srcs:.c=.o)
 
 CCFLAGS = -Wall -Werror -Wextra -I$(INCLUDES)
+
+# This checks if your on linux and then compiles with pthread
+ifeq ($(shell uname -s), Linux)
+CCFLAGS += -pthread
+endif
 
 all: $(NAME)
 

@@ -60,7 +60,7 @@ t_ftl			*ft_getfractols(int ac, char **av, t_ftl **ftl)
 		if (ft_strequ(str, av[i]) == FALSE)
 		{
 			dex = ft_strindex((const char **)ftls, av[i]);
-			if (dex != -1 && ft_addfractol(ftl, fncs[dex]) == NULL)
+			if (dex != -1 && ft_addfractol(ftl, av[i], fncs[dex]) == NULL)
 				return (freeret(ftl, &ftls, &fncs, ""));
 		}
 		str = av[i];
