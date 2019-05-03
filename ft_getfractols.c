@@ -23,15 +23,20 @@ static t_ftl	*freeret(t_ftl **ftl, char ***ftls, void ***fncs, char *message)
 
 static char		**fractolsnew(char ***ftls, void ***fncs)
 {
-	*ftls = ft_strarrnew(1);
+	int		size;
+
+	size = 2;
+	*ftls = ft_strarrnew(size);
 	if (*ftls == NULL)
 		return (NULL);
-	if (ft_strarrcpy_var(*ftls, 1, "temp_placeholder") == NULL)
+	if (ft_strarrcpy_var(*ftls, size, "Julia", "Mandelbrot") == NULL)
 		return (NULL);
-	*fncs = (void **)ft_memalloc(sizeof(void *) * 1);
+	ft_strarrtolower(*ftls);
+	*fncs = (void **)ft_memalloc(sizeof(void *) * size);
 	if (*fncs == NULL)
 		return (NULL);
-	(*fncs)[0] = NULL;
+	(*fncs)[0] = NULL; //TODO ADD Julia FUNCTION HERE
+	(*fncs)[1] = NULL; //TODO ADD Mandelbrot FUNCTION HERE
 	return (*ftls);
 }
 
