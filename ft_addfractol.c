@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 01:31:17 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:40:04 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 15:49:15 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ t_ftl			*ft_addfractol(t_ftl **ftl, char *name, void *fnc)
 	if (new == NULL)
 		return (freeret(ftl, "Ft_ftlnew: Malloc error\n"));
 	addftl(ftl, new);
-	return (NULL);
+	return (new);
 }
