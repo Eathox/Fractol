@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:33:47 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 15:56:12 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 # define WINDOW_X	512
 # define WINDOW_Y	512
 # define POOL_SIZE	8
+# define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
+# define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
+# define HELDOWN_ALT	(ftl->helddown & (1 << 2))
+# define HELDOWN_WIN	(ftl->helddown & (1 << 3))
+# define HELDOWN_CTRL	(ftl->helddown & (1 << 4))
+# define HELDOWN_SHIFT	(ftl->helddown & (1 << 5))
 
 typedef struct	s_ftl
 {
@@ -44,7 +50,7 @@ int			ft_eventmousemove(int x, int y, t_ftl *ftl);
 int			ft_eventmouseup(int mousecode, int x, int y, t_ftl *ftl);
 t_ftl		*ft_addfractol(t_ftl **ftl, char *name, void *fnc);
 t_ftl		*ft_getfractols(int ac, char **av, t_ftl **fractol);
-t_ftl 		*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc);
+t_ftl		*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc);
 void		ft_draw(t_ftl *ftl);
 void		ft_ftldel(t_ftl **ftl);
 
