@@ -6,7 +6,7 @@
 #    By: pholster <pholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/07 20:00:45 by pholster       #+#    #+#                 #
-#    Updated: 2019/05/03 15:12:22 by pholster      ########   odam.nl          #
+#    Updated: 2019/05/03 15:23:57 by pholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ MINILIB = $(MINILIBPATH)/libmlx.a
 INCLUDES = $(LIBFTPATH)/includes/
 NAME = fractol
 
-SRCS = getfractols addfractol ftldel ftlnew
+SRCS = getfractols addfractol ftldel ftlnew draw eventclose eventkeydown \
+	eventkeyup eventmousedown eventmouseup eventmousemove
 SRCS := $(NAME).c $(SRCS:%=ft_%.c)
 
 SRCS := $(sort $(SRCS))

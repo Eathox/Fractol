@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 11:38:14 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:02:50 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 15:15:49 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static t_ftl	*freeret(t_ftl *ftl)
 t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 {
 	t_ftl	*new;
+	int		tmp;
 
 	new = (t_ftl *)ft_memalloc(sizeof(t_ftl));
 	if (new == NULL)
@@ -40,6 +41,7 @@ t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 	new->mlx_image = mlx_new_image(new->mlx, WINDOW_X, WINDOW_Y);
 	if (new->mlx_image == NULL)
 		return (freeret(new));
-	new->mlx_image_addr = mlx_get_data_addr(new->mlx_image, NULL, NULL, NULL);
+	new->mlx_image_addr = mlx_get_data_addr(new->mlx_image, &tmp, &tmp, &tmp);
+	(void)tmp;
 	return (new);
 }
