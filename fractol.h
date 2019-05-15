@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 16:23:56 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/15 15:59:15 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct	s_ftl
 	t_pool			*pool;
 	char			*name;
 	void			(*fractol_fnc)();
-	char			helddown;
 	char			active;
+	int				helddown;
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 }				t_ftl;
@@ -53,7 +53,7 @@ int			ft_eventmouseup(int mousecode, int x, int y, t_ftl *ftl);
 t_ftl		*ft_addfractol(t_ftl **ftl, char *name, void *fnc);
 t_ftl		*ft_getfractols(int ac, char **av, t_ftl **fractol);
 t_ftl		*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc);
-void		ft_draw(t_ftl *ftl);
+void		ft_init(t_ftl *ftl);
 void		ft_ftldel(t_ftl **ftl);
 
 #endif

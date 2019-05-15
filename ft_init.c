@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_draw.c                                          :+:    :+:            */
+/*   ft_init.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:44:34 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/15 15:59:34 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_draw(t_ftl *ftl)
+void	ft_init(t_ftl *ftl)
 {
 	void	*window;
 	t_ftl	*current;

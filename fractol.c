@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 15:45:07 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/15 15:58:36 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(int ac, char **av)
 	ft_strarrsort(av, &ft_strarrsortac);
 	if (ft_getfractols(ac, av, &ftl) == NULL)
 		return (0);
-	ft_draw(ftl);
+	ft_init(ftl);
 	ft_ftldel(&ftl);
 	return (0);
 }
