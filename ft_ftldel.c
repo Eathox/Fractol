@@ -27,8 +27,10 @@ void	ft_ftldel(t_ftl **ftl)
 		if (pool == NULL)
 			pool = current->pool;
 		next = current->next;
-		mlx_destroy_window(mlx, current->mlx_window);
-		mlx_destroy_image(mlx, current->mlx_image);
+		if (current->mlx_window != NULL)
+			mlx_destroy_window(mlx, current->mlx_window);
+		if (current->mlx_image != NULL)
+			mlx_destroy_image(mlx, current->mlx_image);
 		free(current);
 		current = next;
 	}
