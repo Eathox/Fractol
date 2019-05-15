@@ -67,14 +67,18 @@ $(MINILIB): FORCE
 	@$(MAKE) -s -C $(MINILIBPATH)
 
 clean:
+ifneq ($(wildcard $(OBJS) $(SRCS:.c=.c~)),)
 	@printf '$(PRINT_MIN) cleaning $(NAME)\n'
-	@rm -f $(SRCS:.c=.c~)
+	@rm -f $(OBJS) $(SRCS:.c=.c~)
+endif
 	@$(MAKE) -s -C $(LIBFTPATH) clean
 	@$(MAKE) -s -C $(MINILIBPATH) clean
 
 fclean: clean
+ifneq ($(wildcard $(NAME)),)
 	@printf '$(PRINT_MIN) fcleaning $(NAME)\n'
 	@rm -f $(NAME)
+endif
 	@$(MAKE) -s -C $(LIBFTPATH) fclean
 	@$(MAKE) -s -C $(MINILIBPATH) fclean
 
