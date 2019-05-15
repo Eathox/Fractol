@@ -44,7 +44,7 @@ SRCS = getfractols addfractol ftldel ftlnew init eventclose eventkeydown \
 SRCS := $(NAME).c $(SRCS:%=ft_%.c)
 
 SRCS := $(sort $(SRCS))
-OBJS = $(srcs:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 CCFLAGS = -Wall -Werror -Wextra -I$(INCLUDES)
 
