@@ -6,7 +6,7 @@
 #    By: pholster <pholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/07 20:00:45 by pholster       #+#    #+#                 #
-#    Updated: 2019/05/15 15:58:28 by pholster      ########   odam.nl          #
+#    Updated: 2019/05/16 13:02:17 by pholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ INCLUDES = $(LIBFTPATH)/includes/
 NAME = fractol
 
 SRCS = getfractols addfractol ftldel ftlnew init eventclose eventkeydown \
-	eventkeyup eventmousedown eventmouseup eventmousemove
+	eventkeyup eventmousedown eventmouseup eventmousemove drawmandelbrot \
+	drawjulia
 SRCS := $(NAME).c $(SRCS:%=ft_%.c)
 
 SRCS := $(sort $(SRCS))
