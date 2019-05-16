@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 12:46:48 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 12:52:52 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct	s_ftl
 	char			*name;
 	void			(*fractol_fnc)();
 	char			active;
-	int				*endian;
+	int				endian;
 	int				maxdetail;
 	int				helddown;
 	struct s_ftl	*next;
