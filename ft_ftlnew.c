@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 11:38:14 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/15 16:06:09 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 12:46:35 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ static t_ftl	*freeret(t_ftl *ftl)
 	mlx_destroy_image(ftl->mlx, ftl->mlx_image);
 	free(ftl);
 	return (NULL);
+}
+
+static void		setdefault(t_ftl *ftl)
+{
+	ftl->next = NULL;
+	ftl->head = NULL;
+	ftl->helddown = 0;
+	ftl->active = TRUE;
+	ftl->maxdetail = 10;
 }
 
 t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
@@ -32,11 +41,6 @@ t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 	new->mlx = mlx;
 	new->pool = pool;
 	new->name = name;
-	new->next = NULL;
-	new->head = NULL;
-	new->helddown = 0;
-	new->active = TRUE;
-	new->detail = 10;
 	new->fractol_fnc = fnc;
 	new->mlx_window = mlx_new_window(new->mlx, WINDOW_X, WINDOW_Y, new->name);
 	if (new->mlx_window == NULL)
@@ -44,7 +48,8 @@ t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 	new->mlx_image = mlx_new_image(new->mlx, WINDOW_X, WINDOW_Y);
 	if (new->mlx_image == NULL)
 		return (freeret(new));
-	new->mlx_image_addr = mlx_get_data_addr(new->mlx_image, &tmp, &tmp, &tmp);
+	new->mlx_image_addr = mlx_get_data_addr(new->mlx_image, &tmp, &tmp,
+		new->endian);
 	(void)tmp;
 	return (new);
 }
