@@ -30,7 +30,7 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 	if (ftl->active == FALSE)
 		return (0);
 	togglehelddown(keycode, ftl);
-	if (HELDOWN_CTRL && keycode == KEY_C)
+	if ((HELDOWN_CTRL && keycode == KEY_C) || keycode == KEY_ESCAPE)
 	{
 		mlx_destroy_window(ftl->mlx, ftl->mlx_window);
 		ft_eventclose(ftl);

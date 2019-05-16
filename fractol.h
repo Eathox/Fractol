@@ -46,6 +46,7 @@ typedef struct	s_ftl
 	struct s_ftl	*head;
 }				t_ftl;
 
+void			ft_putpixel(t_ftl *ftl, int x, int y, int count);
 void			ft_drawjulia(t_ftl *ftl);
 void			ft_drawmandelbrot(t_ftl *ftl);
 int				ft_eventclose(t_ftl *ftl);
