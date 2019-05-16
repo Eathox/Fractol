@@ -6,62 +6,59 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 14:43:09 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 17:24:45 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "time.h"
 
-void	ft_drawmandelbrot(t_ftl *ftl)
+static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 {
-	ft_putendl(ftl->name);
-	float	xside;
-	float	yside;
-	float	posy;
-	float	posx;
-	float	xscale, yscale, zx, zy, cx, tempx, cy;
-    int		x, y;
-    int		count;
+	int		count;
+	float	cxy[2];
+	float	zxy[2];
+	float	tempx;
 
-	posx = -2.5;
-    posy = -2;
-    xside = 3.5;
-    yside = 3.5;
-	xscale = xside / WINDOW_X;
-    yscale = yside / WINDOW_Y;
+	cxy[0] = x * scale[0] + ftl->posx;
+	cxy[1] = y * scale[1] + ftl->posy;
+	zxy[0] = 0;
+	zxy[1] = 0;
+	count = 0;
+	while ((zxy[0] * zxy[0] + zxy[1] * zxy[1] < 4) && (count < ftl->maxdetail))
+	{
+		tempx = zxy[0] * zxy[0] - zxy[1] * zxy[1] + cxy[0];
+		zxy[1] = 2 * zxy[0] * zxy[1] + cxy[1];
+		zxy[0] = tempx;
+		count++;
+	}
+	// ft_poolque(ftl->pool, &ft_putpixel, 4, ftl, x, y, count);
+	ft_putpixel(ftl, x, y, count);
+}
+
+void		ft_drawmandelbrot(t_ftl *ftl)
+{
+	float	scalex;
+	float	scaley;
+	float	scale[2];
+	int		x;
+	int		y;
+
 	y = 0;
+	scalex = (ftl->scalex * ftl->zoom) / WINDOW_X;
+	scaley = (ftl->scaley * ftl->zoom) / WINDOW_Y;
+	scale[0] = scalex;
+	scale[1] = scalex;
 	while (y < WINDOW_Y)
 	{
 		x = 0;
 		while (x < WINDOW_X)
 		{
-			cx = x * xscale + posx;
-			cy = y * yscale + posy;
-			zx = 0;
-			zy = 0;
-			count = 0;
-			while ((zx * zx + zy * zy < 4) && (count < ftl->maxdetail))
-			{
-				tempx = zx * zx - zy * zy + cx;
-				zy = 2 * zx * zy + cy;
-				zx = tempx;
-				count++;
-			}
-			// ft_poolque(ftl->pool, &ft_putpixel, 4, ftl, x, y, count);
-			ft_putpixel(ftl, x, y, count % 2);
+			ft_poolque(ftl->pool, &drawx, 4, ftl, x, y, scale);
 			x++;
 		}
 		y++;
 	}
-	(void)ftl;
-	// (void)zx;
-	// (void)zy;
-	// (void)x;
-	// (void)cy;
-	// (void)cx;
-	// (void)y;
-	// (void)count;
-	// (void)tempx;
+	ft_pooljoin(ftl->pool);
 	mlx_put_image_to_window(ftl->mlx, ftl->mlx_window, ftl->mlx_image, 0, 0);
 }

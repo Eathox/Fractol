@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 13:00:55 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 17:01:19 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ typedef struct	s_ftl
 	int				endian;
 	int				maxdetail;
 	int				helddown;
+	double			zoom;
+	float			posx;
+	float			posy;
+	float			scalex;
+	float			scaley;
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 }				t_ftl;

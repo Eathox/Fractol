@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 13:02:03 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 15:58:42 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_init(t_ftl *ftl)
 		mlx_hook(window, 5, (1L << 5), &ft_eventmouseup, current);
 		mlx_hook(window, 6, (1L << 6), &ft_eventmousemove, current);
 		mlx_hook(window, 17, (1L << 17), &ft_eventclose, current);
-		ft_poolque(current->pool, current->fractol_fnc, 1, current);
+		current->fractol_fnc(current);
 		current = current->next;
 	}
 	mlx_loop(ftl->mlx);
