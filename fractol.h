@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 17:01:19 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 17:30:41 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include "keycodes.h"
 
 # define MESSAGE_USAGE "./fractol <name of fractol (add lst of fractols)>\n"
-# define WINDOW_X	512
-# define WINDOW_Y	512
-# define POOL_SIZE	8
+# define WINDOW_X	1024
+# define WINDOW_Y	1024
+# define POOL_SIZE	2
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
 # define HELDOWN_ALT	(ftl->helddown & (1 << 2))
@@ -49,6 +49,7 @@ typedef struct	s_ftl
 	float			scaley;
 	struct s_ftl	*next;
 	struct s_ftl	*head;
+	char			renderd;
 }				t_ftl;
 
 void			ft_putpixel(t_ftl *ftl, int x, int y, int count);

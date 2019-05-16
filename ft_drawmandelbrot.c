@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 17:24:45 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 17:31:51 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 		zxy[0] = tempx;
 		count++;
 	}
-	// ft_poolque(ftl->pool, &ft_putpixel, 4, ftl, x, y, count);
+	//ft_poolque(ftl->pool, &ft_putpixel, 4, ftl, x, y, count);
 	ft_putpixel(ftl, x, y, count);
+	if (x == WINDOW_X - 1 && y == WINDOW_Y - 1)
+		ftl->renderd = TRUE;
 }
 
 void		ft_drawmandelbrot(t_ftl *ftl)
@@ -49,16 +51,20 @@ void		ft_drawmandelbrot(t_ftl *ftl)
 	scaley = (ftl->scaley * ftl->zoom) / WINDOW_Y;
 	scale[0] = scalex;
 	scale[1] = scalex;
+	ftl->renderd = FALSE;
 	while (y < WINDOW_Y)
 	{
 		x = 0;
 		while (x < WINDOW_X)
 		{
 			ft_poolque(ftl->pool, &drawx, 4, ftl, x, y, scale);
+			// drawx(ftl, x, y, scale);
 			x++;
 		}
 		y++;
 	}
-	ft_pooljoin(ftl->pool);
+	while (ftl->renderd == FALSE)
+		;
+	//ft_pooljoin(ftl->pool);
 	mlx_put_image_to_window(ftl->mlx, ftl->mlx_window, ftl->mlx_image, 0, 0);
 }
