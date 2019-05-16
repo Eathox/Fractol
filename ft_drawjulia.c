@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 13:02:52 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 13:04:11 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_drawjulia(t_ftl *ftl)
 {
-	ft_putendl("Julia!");
+	ft_putendl(ftl->name);
 	(void)ftl;
 }
