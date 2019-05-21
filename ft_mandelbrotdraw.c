@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_drawmandelbrot.c                                :+:    :+:            */
+/*   ft_mandelbrotdraw.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 17:31:51 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/21 17:00:06 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,37 @@ static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 		zxy[0] = tempx;
 		count++;
 	}
-	if ( count < MAX_DETAIL ) {
-    // sqrt of inner term removed using log simplification rules.
-    double log_zn = log( zxy[0]*zxy[0] + zxy[1]*zxy[1] ) / 2;
-    double nu = log( log_zn / log(2) ) / log(2);
-    // Rearranging the potential function.
-    // Dividing log_zn by log(2) instead of log(N = 1<<8)
-    // because we want the entire palette to range from the
-    // center to radius 2, NOT our bailout radius.
-    count = count + 1 - nu;
-  }
-	//ft_poolque(ftl->pool, &ft_putpixel, 4, ftl, x, y, count);
+	if (count < ftl->maxdetail)
+	{
+		double log_zn = log( zxy[0]*zxy[0] + zxy[1]*zxy[1] ) / 2;
+		double nu = log( log_zn / log(2) ) / log(2);
+		count = count + 1 - nu;
+	}
 	ft_putpixel(ftl, x, y, count);
-	if (x == WINDOW_X - 1 && y == WINDOW_Y - 1)
-		ftl->renderd = TRUE;
 }
 
-void		ft_drawmandelbrot(t_ftl *ftl)
+static void	drawy(t_ftl *ftl, int y, float *scale)
+{
+	int x;
+
+	x = 0;
+	while (x < WINDOW_X)
+	{
+		drawx(ftl, x, y, scale);
+		x++;
+	}
+	atomic_fetch_add(&ftl->renderd, 1);
+}
+
+void		ft_mandelbrotdraw(t_ftl *ftl)
 {
 	float	scalex;
 	float	scaley;
 	float	scale[2];
-	int		x;
 	int		y;
 
 	y = 0;
+	ftl->renderd = 0;
 	scalex = (ftl->scalex * ftl->zoom) / WINDOW_X;
 	scaley = (ftl->scaley * ftl->zoom) / WINDOW_Y;
 	scale[0] = scalex;
@@ -64,17 +70,10 @@ void		ft_drawmandelbrot(t_ftl *ftl)
 	ftl->renderd = FALSE;
 	while (y < WINDOW_Y)
 	{
-		x = 0;
-		while (x < WINDOW_X)
-		{
-			ft_poolque(ftl->pool, &drawx, 4, ftl, x, y, scale);
-			// drawx(ftl, x, y, scale);
-			x++;
-		}
+		ft_poolque(ftl->pool, &drawy, 3, ftl, y, scale);
 		y++;
 	}
-	while (ftl->renderd == FALSE)
+	while (atomic_load(&ftl->renderd) < WINDOW_Y)
 		;
-	//ft_pooljoin(ftl->pool);
 	mlx_put_image_to_window(ftl->mlx, ftl->mlx_window, ftl->mlx_image, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 13:03:21 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/21 16:58:23 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static char		**prepare(char ***ftls, void ***fncs)
 	*fncs = (void **)ft_memalloc(sizeof(void *) * size);
 	if (*fncs == NULL)
 		return (NULL);
-	(*fncs)[0] = &ft_drawjulia;
-	(*fncs)[1] = &ft_drawmandelbrot;
+	(*fncs)[0] = &ft_juliadraw;
+	(*fncs)[1] = &ft_mandelbrotdraw;
 	//TODO ADD THHIRD SET
 	return (*ftls);
 }
