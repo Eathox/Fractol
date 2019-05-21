@@ -25,13 +25,23 @@ static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 	zxy[0] = 0;
 	zxy[1] = 0;
 	count = 0;
-	while ((zxy[0] * zxy[0] + zxy[1] * zxy[1] < 4) && (count < ftl->maxdetail))
+	while ((zxy[0] * zxy[0] + zxy[1] * zxy[1] < (1 << 16)) && (count < ftl->maxdetail))
 	{
 		tempx = zxy[0] * zxy[0] - zxy[1] * zxy[1] + cxy[0];
 		zxy[1] = 2 * zxy[0] * zxy[1] + cxy[1];
 		zxy[0] = tempx;
 		count++;
 	}
+	if ( count < MAX_DETAIL ) {
+    // sqrt of inner term removed using log simplification rules.
+    double log_zn = log( zxy[0]*zxy[0] + zxy[1]*zxy[1] ) / 2;
+    double nu = log( log_zn / log(2) ) / log(2);
+    // Rearranging the potential function.
+    // Dividing log_zn by log(2) instead of log(N = 1<<8)
+    // because we want the entire palette to range from the
+    // center to radius 2, NOT our bailout radius.
+    count = count + 1 - nu;
+  }
 	//ft_poolque(ftl->pool, &ft_putpixel, 4, ftl, x, y, count);
 	ft_putpixel(ftl, x, y, count);
 	if (x == WINDOW_X - 1 && y == WINDOW_Y - 1)

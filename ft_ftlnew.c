@@ -54,7 +54,7 @@ t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 	new->pool = pool;
 	new->name = name;
 	new->active = TRUE;
-	new->maxdetail = 100;
+	new->maxdetail = MAX_DETAIL;
 	new->fractol_fnc = fnc;
 	setscale(new);
 	new->mlx_window = mlx_new_window(new->mlx, WINDOW_X, WINDOW_Y, new->name);

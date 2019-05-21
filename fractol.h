@@ -22,6 +22,7 @@
 # define WINDOW_X	1024
 # define WINDOW_Y	1024
 # define POOL_SIZE	2
+# define MAX_DETAIL 100
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
 # define HELDOWN_ALT	(ftl->helddown & (1 << 2))
@@ -50,6 +51,7 @@ typedef struct	s_ftl
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 	char			renderd;
+	int				palette[64];
 }				t_ftl;
 
 void			ft_putpixel(t_ftl *ftl, int x, int y, int count);
