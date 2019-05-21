@@ -6,12 +6,25 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/21 17:00:06 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/21 17:24:39 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "time.h"
+
+static int	calccount(t_ftl *ftl, int count, float zx, float zy)
+{
+	double	log_zn;
+
+	if (count < ftl->maxdetail)
+	{
+		log_zn = log(zx * zx + zy * zy) / 2;
+		log_zn = log(log_zn / log(2)) / log(2);
+		return ((count + 1) - log_zn);
+	}
+	return (count);
+}
 
 static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 {
@@ -25,20 +38,15 @@ static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 	zxy[0] = 0;
 	zxy[1] = 0;
 	count = 0;
-	while ((zxy[0] * zxy[0] + zxy[1] * zxy[1] < (1 << 16)) && (count < ftl->maxdetail))
+	while (count < ftl->maxdetail &&
+		zxy[0] * zxy[0] + zxy[1] * zxy[1] < (1 << 16))
 	{
 		tempx = zxy[0] * zxy[0] - zxy[1] * zxy[1] + cxy[0];
 		zxy[1] = 2 * zxy[0] * zxy[1] + cxy[1];
 		zxy[0] = tempx;
 		count++;
 	}
-	if (count < ftl->maxdetail)
-	{
-		double log_zn = log( zxy[0]*zxy[0] + zxy[1]*zxy[1] ) / 2;
-		double nu = log( log_zn / log(2) ) / log(2);
-		count = count + 1 - nu;
-	}
-	ft_putpixel(ftl, x, y, count);
+	ft_putpixel(ftl, x, y, calccount(ftl, count, zxy[0], zxy[1]));
 }
 
 static void	drawy(t_ftl *ftl, int y, float *scale)
