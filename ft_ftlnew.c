@@ -6,13 +6,11 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 11:38:14 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/16 17:00:58 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 12:42:57 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-#include <stdio.h>
 
 static t_ftl	*freeret(t_ftl *ftl)
 {
@@ -37,7 +35,7 @@ static void		setscale(t_ftl *ftl)
 		ftl->scaley = 1;
 	}
 	ftl->posx = -(ftl->scalex * 2);
-   	ftl->posy = -(ftl->scaley * 2);
+	ftl->posy = -(ftl->scaley * 2);
 	ftl->zoom = 4.2;
 }
 
