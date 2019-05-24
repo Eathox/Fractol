@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_zoom.c                                          :+:    :+:            */
+/*   ft_move.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/24 13:09:38 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 13:43:58 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 13:47:47 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	zoomset(t_ftl *ftl, double zoom)
+static int	posset(t_ftl *ftl, double posx, double posy)
 {
-	if (zoom > 10)
-	{
-		ftl->zoom = 10;
-		return (FALSE);
-	}
-	ftl->zoom = zoom;
+	ftl->posx = posx;
+	ftl->posy = posy;
 	return (TRUE);
 }
 
-int			ft_zoom(t_ftl *ftl, int mousecode, int x, int y)
+int			ft_move(t_ftl *ftl, int keycode)
 {
-	if (mousecode == MOUSE_SCROLLUP && zoomset(ftl, (ftl->zoom) / 1.1))
-		return (TRUE);
-	else if (mousecode == MOUSE_SCROLLDOWN && zoomset(ftl, (ftl->zoom) * 1.1))
-		return (TRUE);
-	(void)x;
-	(void)y;
+	if (keycode == KEY_RIGHTARROW)
+		return (posset(ftl, ftl->posx / 1.1, ftl->posy));
+	else if (keycode == KEY_LEFTARROW)
+		return (posset(ftl, ftl->posx * 1.1, ftl->posy));
+	else if (keycode == KEY_DOWNARROW)
+		return (posset(ftl, ftl->posx, ftl->posy / 1.1));
+	else if (keycode == KEY_UPARROW)
+		return (posset(ftl, ftl->posx, ftl->posy * 1.1));
 	return (FALSE);
 }

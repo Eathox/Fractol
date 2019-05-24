@@ -6,11 +6,17 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 13:21:27 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 13:43:30 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static int	drawret(t_ftl *ftl)
+{
+	ftl->fractol_fnc(ftl);
+	return (0);
+}
 
 static int	togglehelddown(int mousecode, t_ftl *ftl)
 {
@@ -23,11 +29,10 @@ static int	togglehelddown(int mousecode, t_ftl *ftl)
 
 int			ft_eventmousedown(int mousecode, int x, int y, t_ftl *ftl)
 {
-	if (y < 0)
-		return (0);
-	if (ftl->active == FALSE)
+	if (y < 0 || ftl->active == FALSE)
 		return (0);
 	togglehelddown(mousecode, ftl);
-	ft_zoom(ftl, mousecode, x, y);
+	if (ft_zoom(ftl, mousecode, x, y))
+		return (drawret(ftl));
 	return (0);
 }

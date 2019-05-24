@@ -6,7 +6,7 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/05/16 14:44:08 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 13:32:42 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // 	i = 0;
 // 	while (i < WINDOW_X)
 // 	{
-		
+
 // 	}
 
 // }
@@ -47,7 +47,7 @@ int			calc_interpolate(int color1, int color2)
 }
 
 int			interpolate(int color1, int color2)
-{	
+{
 	int		result;
 	int		rgb1;
 	int		rgb2;
@@ -81,7 +81,7 @@ int			ft_getcolor(t_ftl *ftl, int count, int lastcolor)
 	// 	return (colors[0]|(colors[1] << 8)|(colors[2] << 16));
 	else
 		return(interpolate(colors[0]|(colors[1] << 8)|(colors[2] << 16), lastcolor));
-	
+
 }
 
 void		ft_putpixel(t_ftl *ftl, int x, int y, int count)
@@ -94,7 +94,7 @@ void		ft_putpixel(t_ftl *ftl, int x, int y, int count)
 	lastcolor = 0;
 	if (x > WINDOW_X || x < 0 || y > WINDOW_Y || y < 0)
 		return ;
-	if (x != 0)
+	if (x != 0 && (x != WINDOW_X - 1))
 		lastcolor = mem[((WINDOW_X * y) + (x - 1)) * 4];
 	color = ft_getcolor(ftl, count, lastcolor);
 	ft_memcpy(&mem[((WINDOW_X * y) + x) * 4], &color, 4);

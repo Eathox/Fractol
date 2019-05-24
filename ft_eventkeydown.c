@@ -6,11 +6,17 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/03 16:30:54 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 13:48:25 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static int	drawret(t_ftl *ftl)
+{
+	ftl->fractol_fnc(ftl);
+	return (0);
+}
 
 static int	togglehelddown(int keycode, t_ftl *ftl)
 {
@@ -36,5 +42,13 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 		ft_eventclose(ftl);
 		return (0);
 	}
+	if (keycode == KEY_EQUALS || keycode == KEY_MINUS)
+	{
+		ftl->detail += (keycode == KEY_EQUALS) ? DETAIL_STEP : -DETAIL_STEP;
+		ftl->detail = ft_constrain(ftl->detail, DETAIL_STEP, MAX_DETAIL);
+		return (drawret(ftl));
+	}
+	if (ft_move(ftl, keycode))
+		return (drawret(ftl));
 	return (0);
 }

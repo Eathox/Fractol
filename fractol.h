@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 13:25:12 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 13:48:07 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define MESSAGE_USAGE "./fractol <name of fractol (add lst of fractols)>\n"
 # define WINDOW_X	1024
 # define WINDOW_Y	1024
-# define POOL_SIZE	4
+# define POOL_SIZE	8
 # define MAX_DETAIL 250
 # define DETAIL_STEP 8
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
@@ -52,10 +52,10 @@ typedef struct	s_ftl
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 	atomic_int		renderd;
-	int				lastcolor;
 }				t_ftl;
 
-void			ft_zoom(t_ftl *ftl, int mousecode, int x, int y);
+int				ft_move(t_ftl *ftl, int keycode);
+int				ft_zoom(t_ftl *ftl, int mousecode, int x, int y);
 void			ft_putpixel(t_ftl *ftl, int x, int y, int count);
 void			ft_juliadraw(t_ftl *ftl);
 void			ft_mandelbrotdraw(t_ftl *ftl);

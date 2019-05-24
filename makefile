@@ -6,7 +6,7 @@
 #    By: pholster <pholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/07 20:00:45 by pholster       #+#    #+#                 #
-#    Updated: 2019/05/24 13:10:38 by pholster      ########   odam.nl          #
+#    Updated: 2019/05/24 13:48:10 by pholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ NAME = fractol
 
 SRCS = getfractols addfractol ftldel ftlnew init eventclose eventkeydown \
 	eventkeyup eventmousedown eventmouseup eventmousemove mandelbrotdraw \
-	juliadraw putpixel zoom
+	juliadraw putpixel zoom move
 SRCS := $(NAME).c $(SRCS:%=ft_%.c)
 
 SRCS := $(sort $(SRCS))
