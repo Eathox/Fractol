@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 13:38:40 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 14:12:55 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 	zx = 0;
 	zy = 0;
 	count = 0;
-	while (count < ftl->detail && zx * zx + zy * zy < 4)
+	while (count < ftl->detail && zx * zx + zy * zy < (1 << 16))
 	{
 		calczxy(&zx, &zy, cx, cy);
 		count++;

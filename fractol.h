@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 13:48:07 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 14:21:09 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "keycodes.h"
 
 # define MESSAGE_USAGE "./fractol <name of fractol (add lst of fractols)>\n"
-# define WINDOW_X	1024
-# define WINDOW_Y	1024
+# define WINDOW_X	768
+# define WINDOW_Y	768
 # define POOL_SIZE	8
 # define MAX_DETAIL 250
 # define DETAIL_STEP 8
@@ -51,7 +51,6 @@ typedef struct	s_ftl
 	double			scaley;
 	struct s_ftl	*next;
 	struct s_ftl	*head;
-	atomic_int		renderd;
 }				t_ftl;
 
 int				ft_move(t_ftl *ftl, int keycode);
