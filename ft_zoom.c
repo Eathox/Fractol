@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/24 13:09:38 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 13:22:16 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 13:25:39 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void		ft_zoom(t_ftl *ftl, int mousecode, int x, int y)
 		zoomset(ftl, (ftl->zoom) * 1.1);
 		ftl->fractol_fnc(ftl);
 	}
+	(void)x;
+	(void)y;
 }
