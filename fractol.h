@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 14:21:09 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 14:56:40 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "keycodes.h"
 
 # define MESSAGE_USAGE "./fractol <name of fractol (add lst of fractols)>\n"
-# define WINDOW_X	768
-# define WINDOW_Y	768
+# define WINDOW_X	(1 << 11)
+# define WINDOW_Y	((1 << 11) / 2)
 # define POOL_SIZE	8
 # define MAX_DETAIL 250
 # define DETAIL_STEP 8

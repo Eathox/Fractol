@@ -6,7 +6,7 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/05/24 13:32:42 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 15:20:33 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void		ft_putpixel(t_ftl *ftl, int x, int y, int count)
 	lastcolor = 0;
 	if (x > WINDOW_X || x < 0 || y > WINDOW_Y || y < 0)
 		return ;
-	if (x != 0 && (x != WINDOW_X - 1))
+	if (x != 0)
 		lastcolor = mem[((WINDOW_X * y) + (x - 1)) * 4];
 	color = ft_getcolor(ftl, count, lastcolor);
 	ft_memcpy(&mem[((WINDOW_X * y) + x) * 4], &color, 4);
