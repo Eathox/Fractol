@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 13:48:25 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 15:39:18 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 {
 	if (ftl->active == FALSE)
 		return (0);
+	if (keycode == KEY_SPACE)
+		ftl->locked = (ftl->locked) ? FALSE : TRUE;
 	togglehelddown(keycode, ftl);
 	if ((HELDOWN_CTRL && keycode == KEY_C) || keycode == KEY_ESCAPE)
 	{

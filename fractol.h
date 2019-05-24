@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 14:56:40 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 15:28:50 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define WINDOW_X	(1 << 11)
 # define WINDOW_Y	((1 << 11) / 2)
 # define POOL_SIZE	8
-# define MAX_DETAIL 250
-# define DETAIL_STEP 8
+# define MAX_DETAIL	250
+# define DETAIL_STEP	8
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
 # define HELDOWN_ALT	(ftl->helddown & (1 << 2))
@@ -41,7 +41,6 @@ typedef struct	s_ftl
 	char			*name;
 	void			(*fractol_fnc)();
 	char			active;
-	int				endian;
 	int				detail;
 	int				helddown;
 	double			zoom;
@@ -49,6 +48,9 @@ typedef struct	s_ftl
 	double			posy;
 	double			scalex;
 	double			scaley;
+	double			cx;
+	double			cy;
+	char			locked;
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 }				t_ftl;
