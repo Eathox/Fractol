@@ -41,7 +41,7 @@ int			calc_interpolate(int color1, int color2)
 	int		result;
 	float	fraction;
 
-	fraction = 0.6;
+	fraction = 0.4;
 	result = (color2 - color1) * fraction + color1;
 	return (result);
 }
@@ -75,13 +75,14 @@ int			ft_getcolor(t_ftl *ftl, int count, int lastcolor)
 	colors[2] = 255 * (bright / ftl->detail);
 	change_palette(colors, bright, ftl);
 	(void)ftl;
-	if (lastcolor == 0 && count != ftl->detail)
-		return (colors[0]|(colors[1] << 8)|(colors[2] << 16));
-	if (count == ftl->detail)
-		return (0x0);
-	else
-		return(interpolate(colors[0]|(colors[1] << 8)|(colors[2] << 16), lastcolor));
-
+	(void)lastcolor;
+	// if (lastcolor == 0 && count != ftl->detail)
+	// 	return (colors[0]|(colors[1] << 8)|(colors[2] << 16));
+	// if (count == ftl->detail)
+	// 	return (0x0);
+	// else
+	// return(interpolate(colors[0]|(colors[1] << 8)|(colors[2] << 16), lastcolor));
+	return (colors[0]|(colors[1] << 8)|(colors[2] << 16));
 }
 
 void		ft_putpixel(t_ftl *ftl, int x, int y, int count)
