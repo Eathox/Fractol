@@ -22,7 +22,8 @@
 # define WINDOW_X	1024
 # define WINDOW_Y	1024
 # define POOL_SIZE	4
-# define MAX_DETAIL 100
+# define MAX_DETAIL 250
+# define DETAIL_STEP 8 
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
 # define HELDOWN_ALT	(ftl->helddown & (1 << 2))
@@ -41,7 +42,7 @@ typedef struct	s_ftl
 	void			(*fractol_fnc)();
 	char			active;
 	int				endian;
-	int				maxdetail;
+	int				detail;
 	int				helddown;
 	double			zoom;
 	float			posx;
@@ -51,7 +52,7 @@ typedef struct	s_ftl
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 	atomic_int		renderd;
-	int				palette[64];
+	int				lastcolor;
 }				t_ftl;
 
 void			ft_putpixel(t_ftl *ftl, int x, int y, int count);

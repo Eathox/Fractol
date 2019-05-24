@@ -16,7 +16,7 @@ static int	calccount(t_ftl *ftl, int count, float zx, float zy)
 {
 	double	log_zn;
 
-	if (count < ftl->maxdetail)
+	if (count < ftl->detail)
 	{
 		log_zn = log(zx * zx + zy * zy) / 2;
 		log_zn = log(log_zn / log(2)) / log(2);
@@ -51,7 +51,7 @@ static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 	zx = 0;
 	zy = 0;
 	count = 0;
-	while (count < ftl->maxdetail && zx * zx + zy * zy < (1 << 16))
+	while (count < ftl->detail && zx * zx + zy * zy < (1 << 16))
 	{
 		calczxy(&zx, &zy, cx, cy);
 		count++;
