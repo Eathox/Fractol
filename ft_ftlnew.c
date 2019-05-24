@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 11:38:14 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/22 12:42:57 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 13:04:23 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void		setscale(t_ftl *ftl)
 		ftl->scalex = (ftl->scalex / ftl->scaley);
 		ftl->scaley = 1;
 	}
+	// make this all place it in center
 	ftl->posx = -(ftl->scalex * 2);
 	ftl->posy = -(ftl->scaley * 2);
 	ftl->zoom = 4.2;
