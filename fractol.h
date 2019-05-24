@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 15:28:50 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 15:44:34 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct	s_ftl
 	double			cx;
 	double			cy;
 	char			locked;
+	int				debugx;
+	int				debugy;
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 }				t_ftl;

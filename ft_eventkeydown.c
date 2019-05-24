@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 15:39:18 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 15:46:02 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	togglehelddown(int keycode, t_ftl *ftl)
 		ftl->helddown |= (1 << 4);
 	else if (keycode == KEY_LSHIFT || keycode == KEY_RSHIFT)
 		ftl->helddown |= (1 << 5);
+	else if (keycode == KEY_SPACE)
+		ftl->locked = (ftl->locked) ? FALSE : TRUE;
 	return (0);
 }
 
@@ -35,9 +37,12 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 {
 	if (ftl->active == FALSE)
 		return (0);
-	if (keycode == KEY_SPACE)
-		ftl->locked = (ftl->locked) ? FALSE : TRUE;
 	togglehelddown(keycode, ftl);
+	if (keycode == KEY_BACKSPACE)
+	{
+		ftl->debugx = -1;
+		ftl->debugy = -1;
+	}
 	if ((HELDOWN_CTRL && keycode == KEY_C) || keycode == KEY_ESCAPE)
 	{
 		mlx_destroy_window(ftl->mlx, ftl->mlx_window);
