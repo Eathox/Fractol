@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/24 13:09:38 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 14:20:20 by pholster      ########   odam.nl         */
+/*   Updated: 2019/05/24 14:27:24 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static int	posset(t_ftl *ftl, double posx, double posy)
 int			ft_move(t_ftl *ftl, int keycode)
 {
 	if (keycode == KEY_RIGHTARROW)
-		return (posset(ftl, ftl->posx + (0.2 * ftl->zoom), ftl->posy));
+		return (posset(ftl, ftl->posx + (0.15 * ftl->zoom), ftl->posy));
 	else if (keycode == KEY_LEFTARROW)
-		return (posset(ftl, ftl->posx - (0.2 * ftl->zoom), ftl->posy));
+		return (posset(ftl, ftl->posx - (0.15 * ftl->zoom), ftl->posy));
 	else if (keycode == KEY_DOWNARROW)
-		return (posset(ftl, ftl->posx, ftl->posy + (0.2 * ftl->zoom)));
+		return (posset(ftl, ftl->posx, ftl->posy + (0.15 * ftl->zoom)));
 	else if (keycode == KEY_UPARROW)
-		return (posset(ftl, ftl->posx, ftl->posy - (0.2 * ftl->zoom)));
+		return (posset(ftl, ftl->posx, ftl->posy - (0.15 * ftl->zoom)));
 	return (FALSE);
 }
