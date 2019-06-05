@@ -18,7 +18,7 @@ int			ft_eventmousemove(int x, int y, t_ftl *ftl)
 		return (0);
 	if (ftl->locked == FALSE && ft_strequ(ftl->name, "Julia"))
 	{
-		ftl->cx = ((double)x / WINDOW_X);
+		ftl->cx = (((double)x * 3.5) / WINDOW_X) - 2.5;
 		ftl->cy = ((double)y / WINDOW_Y);
 		ftl->fractol_fnc(ftl);
 	}

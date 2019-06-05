@@ -23,13 +23,22 @@
 # define WINDOW_Y	((1 << 11) / 2)
 # define POOL_SIZE	8
 # define MAX_DETAIL	250
-# define DETAIL_STEP	8
+# define DETAIL_STEP	5
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
 # define HELDOWN_ALT	(ftl->helddown & (1 << 2))
 # define HELDOWN_WIN	(ftl->helddown & (1 << 3))
 # define HELDOWN_CTRL	(ftl->helddown & (1 << 4))
 # define HELDOWN_SHIFT	(ftl->helddown & (1 << 5))
+
+typedef struct	s_pixinfo
+{
+	double			cx;
+	double			cy;
+	int				x;
+	int				y;
+}				t_pixinfo;
+
 
 typedef struct	s_ftl
 {
@@ -59,7 +68,7 @@ typedef struct	s_ftl
 
 int				ft_move(t_ftl *ftl, int keycode);
 int				ft_zoom(t_ftl *ftl, int mousecode, int x, int y);
-void			ft_putpixel(t_ftl *ftl, int x, int y, int count);
+void			ft_putpixel(t_ftl *ftl, t_pixinfo comp, int count);
 void			ft_juliadraw(t_ftl *ftl);
 void			ft_mandelbrotdraw(t_ftl *ftl);
 int				ft_eventclose(t_ftl *ftl);
