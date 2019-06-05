@@ -45,6 +45,7 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 	double	zy;
 	double	cx;
 	double	cy;
+	t_pixinfo	comp;
 
 	zx = x * scale[0] + ftl->posx;
 	zy = y * scale[1] + ftl->posy;
@@ -56,7 +57,12 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 		calczxy(&zx, &zy, cx, cy);
 		count++;
 	}
-	ft_putpixel(ftl, x, y, count); //calccount(ftl, count, zx, zy));
+	comp.x = x;
+	comp.y = y;
+	comp.cx = zx;
+	comp.cy = zy;
+	if (count < ftl->detail)
+		ft_putpixel(ftl, comp, count); //calccount(ftl, count, zx, zy));
 }
 
 static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, double *scale)
@@ -94,4 +100,5 @@ void		ft_juliadraw(t_ftl *ftl)
 	while (atomic_load(&renderd) < WINDOW_Y)
 		;
 	mlx_put_image_to_window(ftl->mlx, ftl->mlx_window, ftl->mlx_image, 0, 0);
+	ft_bzero(ftl->mlx_image_addr, (WINDOW_X * WINDOW_Y) * 4);
 }
