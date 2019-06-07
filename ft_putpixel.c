@@ -18,15 +18,13 @@ unsigned int			*palettemaker(t_ftl *ftl)
 	int				i;
 	int				step;
 
-	i = 0;
-	step = 5;
+	i = 1;
+	step = 1;
 	palette = (unsigned int*)ft_memalloc(sizeof(unsigned int) * MAX_DETAIL);
 	while (i < MAX_DETAIL)
 	{
 		palette[i] += step;
-		step += 1;
-		if (step < 100 && ftl->colors == 0)
-			step += 5;
+		step += 5;
 		if (ftl->colors == 1 && i > 1)
 			palette[i] = (palette[i] << 8);
 		else if (ftl->colors == 2)
