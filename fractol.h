@@ -70,7 +70,7 @@ typedef struct	s_ftl
 
 int				ft_move(t_ftl *ftl, int keycode);
 int				ft_zoom(t_ftl *ftl, int mousecode, int x, int y);
-void			ft_putpixel(t_ftl *ftl, t_pixinfo comp, int count);
+void			ft_putpixel(t_ftl *ftl, int x, int y, int count);
 void			ft_juliadraw(t_ftl *ftl);
 void			ft_mandelbrotdraw(t_ftl *ftl);
 void			ft_tricorndraw(t_ftl *ftl);
@@ -85,6 +85,6 @@ t_ftl			*ft_getfractols(int ac, char **av, t_ftl **fractol);
 t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc);
 void			ft_init(t_ftl *ftl);
 void			ft_ftldel(t_ftl **ftl);
-unsigned int	*palettemaker(void);
+unsigned int	*palettemaker(t_ftl *ftl);
 
 #endif

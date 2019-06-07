@@ -58,7 +58,7 @@ t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 	new->debugx = -1;
 	new->debugy = -1;
 	new->colors = 0;
-	new->palette = palettemaker();
+	new->palette = palettemaker(new);
 	setscale(new);
 	new->mlx_window = mlx_new_window(new->mlx, WINDOW_X, WINDOW_Y, new->name);
 	if (new->mlx_window == NULL)
