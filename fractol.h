@@ -22,7 +22,7 @@
 # define WINDOW_X	(1 << 11)
 # define WINDOW_Y	((1 << 11) / 2)
 # define POOL_SIZE	8
-# define MAX_DETAIL	250
+# define MAX_DETAIL	150
 # define DETAIL_STEP	5
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
@@ -48,10 +48,12 @@ typedef struct	s_ftl
 	void			*mlx_image_addr;
 	t_pool			*pool;
 	char			*name;
+	unsigned int	*palette;
 	void			(*fractol_fnc)();
 	char			active;
 	int				detail;
 	int				helddown;
+	int				colors;
 	double			zoom;
 	double			posx;
 	double			posy;
@@ -71,6 +73,7 @@ int				ft_zoom(t_ftl *ftl, int mousecode, int x, int y);
 void			ft_putpixel(t_ftl *ftl, t_pixinfo comp, int count);
 void			ft_juliadraw(t_ftl *ftl);
 void			ft_mandelbrotdraw(t_ftl *ftl);
+void			ft_tricorndraw(t_ftl *ftl);
 int				ft_eventclose(t_ftl *ftl);
 int				ft_eventkeydown(int keycode, t_ftl *ftl);
 int				ft_eventkeyup(int keycode, t_ftl *ftl);
@@ -82,5 +85,6 @@ t_ftl			*ft_getfractols(int ac, char **av, t_ftl **fractol);
 t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc);
 void			ft_init(t_ftl *ftl);
 void			ft_ftldel(t_ftl **ftl);
+unsigned int	*palettemaker(void);
 
 #endif

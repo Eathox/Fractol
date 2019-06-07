@@ -57,5 +57,11 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 	}
 	if (ft_move(ftl, keycode))
 		return (drawret(ftl));
+	if (keycode == KEY_C)
+	{
+		ftl->colors += 1;
+		if (ftl->colors > 5)
+			ftl->colors = 0;
+	}
 	return (0);
 }

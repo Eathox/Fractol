@@ -25,11 +25,11 @@ static char		**prepare(char ***ftls, void ***fncs)
 {
 	int		size;
 
-	size = 2;
+	size = 3;
 	*ftls = ft_strarrnew(size);
 	if (*ftls == NULL)
 		return (NULL);
-	if (ft_strarrcpy_var(*ftls, size, "Julia", "Mandelbrot") == NULL)
+	if (ft_strarrcpy_var(*ftls, size, "Julia", "Mandelbrot", "Tricorn") == NULL)
 		return (NULL);
 	ft_strarrtolower(*ftls);
 	*fncs = (void **)ft_memalloc(sizeof(void *) * size);
@@ -37,6 +37,7 @@ static char		**prepare(char ***ftls, void ***fncs)
 		return (NULL);
 	(*fncs)[0] = &ft_juliadraw;
 	(*fncs)[1] = &ft_mandelbrotdraw;
+	(*fncs)[2] = &ft_tricorndraw;
 	//TODO ADD THHIRD SET
 	return (*ftls);
 }

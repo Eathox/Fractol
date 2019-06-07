@@ -61,8 +61,9 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 	comp.y = y;
 	comp.cx = zx;
 	comp.cy = zy;
-	if (count < ftl->detail)
-		ft_putpixel(ftl, comp, calccount(ftl, count, zx, zy));
+	count = calccount(ftl, count, zx, zy);
+	if (count < ftl->detail && count != 0)
+		ft_putpixel(ftl, comp, count);
 }
 
 static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, double *scale)

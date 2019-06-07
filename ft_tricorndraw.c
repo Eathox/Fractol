@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_juliadraw.c                                     :+:    :+:            */
+/*   ft_tricorndraw.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pholster <pholster@student.codam.nl>         +#+                     */
+/*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 15:33:05 by pholster      ########   odam.nl         */
+/*   Created: 2019/06/06 11:03:10 by wvan-dam      #+#    #+#                 */
+/*   Updated: 2019/06/06 11:03:11 by wvan-dam      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,27 @@ static int	calccount(t_ftl *ftl, int count, double zx, double zy)
 
 static void	calczxy(double *zx, double *zy, double cx, double cy)
 {
-	double	tempzx;
-	double	tempzy;
-	double	tempx;
+	double	xtemp;
 
-	tempzx = *zx;
-	tempzy = *zy;
-	tempx = (tempzx * tempzx - tempzy * tempzy) + cx;
-	*zy = (2 * tempzx * tempzy) + cy;
-	*zx = tempx;
+	xtemp = (*zx * *zx - *zy * *zy) + cx;
+    *zy = (-2 * *zx * *zy) + cy;
+	*zx = xtemp;
 }
 
 static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 {
-	int		count;
-	double	zx;
-	double	zy;
-	double	cx;
-	double	cy;
+	int			count;
+	double		zx;
+	double		zy;
+	double		cx;
+	double		cy;
 	t_pixinfo	comp;
 
-	zx = x * scale[0] + ftl->posx;
-	zy = y * scale[1] + ftl->posy;
-	cx = ftl->cx;
-	cy = ftl->cy;
 	count = 0;
+	cx = x * scale[0] + ftl->posx;
+	cy = y * scale[1] + ftl->posy;
+	zx = 0;
+	zy = 0;
 	while (count < ftl->detail && zx * zx + zy * zy < 4)
 	{
 		calczxy(&zx, &zy, cx, cy);
@@ -79,7 +75,7 @@ static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, double *scale)
 	atomic_fetch_add(renderd, 1);
 }
 
-void		ft_juliadraw(t_ftl *ftl)
+void		ft_tricorndraw(t_ftl *ftl)
 {
 	atomic_int	renderd;
 	double		scalex;
