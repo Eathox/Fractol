@@ -55,7 +55,7 @@ t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc)
 	new->detail = MAX_DETAIL / 2;
 	new->fractol_fnc = fnc;
 	new->colors = 0;
-	new->palette = palettemaker();
+	new->palette = palettemaker(new);
 	setscale(new);
 	new->mlx_window = mlx_new_window(new->mlx, WINDOW_X, WINDOW_Y, new->name);
 	if (new->mlx_window == NULL)

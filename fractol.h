@@ -74,6 +74,6 @@ t_ftl			*ft_getfractols(int ac, char **av, t_ftl **fractol);
 t_ftl			*ft_ftlnew(void *mlx, t_pool *pool, char *name, void *fnc);
 void			ft_init(t_ftl *ftl);
 void			ft_ftldel(t_ftl **ftl);
-unsigned int	*palettemaker(void);
+unsigned int	*palettemaker(t_ftl *ftl);
 
 #endif

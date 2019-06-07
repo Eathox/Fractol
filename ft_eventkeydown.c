@@ -57,6 +57,8 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 		ftl->colors += 1;
 		if (ftl->colors > 5)
 			ftl->colors = 0;
+		ftl->palette = palettemaker(ftl);
+		return (drawret(ftl));
 	}
 	return (0);
 }
