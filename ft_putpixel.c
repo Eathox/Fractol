@@ -6,13 +6,13 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/07 16:34:31 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 16:35:37 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-unsigned int			*palettemaker(t_ftl *ftl)
+static unsigned int			*palettemaker(t_ftl *ftl)
 {
 	unsigned int	*palette;
 	int				i;
@@ -45,7 +45,8 @@ unsigned int			*palettemaker(t_ftl *ftl)
 	return (palette);
 }
 
-unsigned int			calc_interpolate(unsigned int color1, unsigned int color2, double frac)
+static unsigned int			calc_interpolate(unsigned int color1,
+	unsigned int color2, double frac)
 {
 	unsigned int		result;
 
@@ -53,7 +54,8 @@ unsigned int			calc_interpolate(unsigned int color1, unsigned int color2, double
 	return (result);
 }
 
-unsigned int			interpolate(unsigned int color1, unsigned int color2, double frac)
+static unsigned int			interpolate(unsigned int color1,
+	unsigned int color2, double frac)
 {
 	unsigned int		result;
 	unsigned int		rgb1;
