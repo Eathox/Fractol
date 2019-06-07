@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 15:49:32 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 16:27:54 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ int			ft_eventmousedown(int mousecode, int x, int y, t_ftl *ftl)
 	if (y < 0 || ftl->active == FALSE)
 		return (0);
 	togglehelddown(mousecode, ftl);
-	if (mousecode == MOUSE_LEFT)
-	{
-		ftl->debugx = x;
-		ftl->debugy = y;
-		drawret(ftl);
-	}
 	if (ft_zoom(ftl, mousecode, x, y))
 		return (drawret(ftl));
 	return (0);

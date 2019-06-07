@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 15:44:34 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 13:36:58 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "libft/includes/libft.h"
 # include "keycodes.h"
 
-# define MESSAGE_USAGE "./fractol <name of fractol (add lst of fractols)>\n"
 # define WINDOW_X	(1 << 11)
 # define WINDOW_Y	((1 << 11) / 2)
 # define POOL_SIZE	8
@@ -30,15 +29,6 @@
 # define HELDOWN_WIN	(ftl->helddown & (1 << 3))
 # define HELDOWN_CTRL	(ftl->helddown & (1 << 4))
 # define HELDOWN_SHIFT	(ftl->helddown & (1 << 5))
-
-typedef struct	s_pixinfo
-{
-	double			cx;
-	double			cy;
-	int				x;
-	int				y;
-}				t_pixinfo;
-
 
 typedef struct	s_ftl
 {
@@ -62,15 +52,14 @@ typedef struct	s_ftl
 	double			cx;
 	double			cy;
 	char			locked;
-	int				debugx;
-	int				debugy;
 	struct s_ftl	*next;
 	struct s_ftl	*head;
 }				t_ftl;
 
+int				ft_putusage(void);
 int				ft_move(t_ftl *ftl, int keycode);
 int				ft_zoom(t_ftl *ftl, int mousecode, int x, int y);
-void			ft_putpixel(t_ftl *ftl, t_pixinfo comp, int count);
+void			ft_putpixel(t_ftl *ftl, int x, int y, int count);
 void			ft_juliadraw(t_ftl *ftl);
 void			ft_mandelbrotdraw(t_ftl *ftl);
 void			ft_tricorndraw(t_ftl *ftl);
