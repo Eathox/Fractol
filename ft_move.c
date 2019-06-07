@@ -6,13 +6,13 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/24 13:09:38 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 14:27:24 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 19:04:25 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	posset(t_ftl *ftl, double posx, double posy)
+static int	posset(t_ftl *ftl, float posx, float posy)
 {
 	ftl->posx = posx;
 	ftl->posy = posy;

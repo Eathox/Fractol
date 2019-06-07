@@ -6,15 +6,15 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/06 11:03:10 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/07 13:34:22 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 19:04:25 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	calccount(t_ftl *ftl, int count, double zx, double zy)
+static int	calccount(t_ftl *ftl, int count, float zx, float zy)
 {
-	double	log_zn;
+	float	log_zn;
 
 	if (count < ftl->detail)
 	{
@@ -25,22 +25,22 @@ static int	calccount(t_ftl *ftl, int count, double zx, double zy)
 	return (count);
 }
 
-static void	calczxy(double *zx, double *zy, double cx, double cy)
+static void	calczxy(float *zx, float *zy, float cx, float cy)
 {
-	double	xtemp;
+	float	xtemp;
 
 	xtemp = (*zx * *zx - *zy * *zy) + cx;
 	*zy = (-2 * *zx * *zy) + cy;
 	*zx = xtemp;
 }
 
-static void	drawx(t_ftl *ftl, int x, int y, double *scale)
+static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 {
 	int			count;
-	double		zx;
-	double		zy;
-	double		cx;
-	double		cy;
+	float		zx;
+	float		zy;
+	float		cx;
+	float		cy;
 
 	count = 0;
 	cx = x * scale[0] + ftl->posx;
@@ -57,7 +57,7 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 		ft_putpixel(ftl, x, y, count);
 }
 
-static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, double *scale)
+static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, float *scale)
 {
 	int x;
 
@@ -73,9 +73,9 @@ static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, double *scale)
 void		ft_tricorndraw(t_ftl *ftl)
 {
 	atomic_int	renderd;
-	double		scalex;
-	double		scaley;
-	double		scale[2];
+	float		scalex;
+	float		scaley;
+	float		scale[2];
 	int			y;
 
 	y = 0;
