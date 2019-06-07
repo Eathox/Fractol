@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/24 15:33:05 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 13:33:26 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 	double	zy;
 	double	cx;
 	double	cy;
-	t_pixinfo	comp;
 
 	zx = x * scale[0] + ftl->posx;
 	zy = y * scale[1] + ftl->posy;
@@ -57,13 +56,9 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 		calczxy(&zx, &zy, cx, cy);
 		count++;
 	}
-	comp.x = x;
-	comp.y = y;
-	comp.cx = zx;
-	comp.cy = zy;
 	count = calccount(ftl, count, zx, zy);
 	if (count < ftl->detail && count != 0)
-		ft_putpixel(ftl, comp, count);
+		ft_putpixel(ftl, x, y, count);
 }
 
 static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, double *scale)

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/06 11:03:10 by wvan-dam      #+#    #+#                 */
-/*   Updated: 2019/06/06 11:03:11 by wvan-dam      ########   odam.nl         */
+/*   Created: 2019/06/06 11:03:10 by wvan-dam       #+#    #+#                */
+/*   Updated: 2019/06/07 13:34:22 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	calczxy(double *zx, double *zy, double cx, double cy)
 	double	xtemp;
 
 	xtemp = (*zx * *zx - *zy * *zy) + cx;
-    *zy = (-2 * *zx * *zy) + cy;
+	*zy = (-2 * *zx * *zy) + cy;
 	*zx = xtemp;
 }
 
@@ -41,7 +41,6 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 	double		zy;
 	double		cx;
 	double		cy;
-	t_pixinfo	comp;
 
 	count = 0;
 	cx = x * scale[0] + ftl->posx;
@@ -53,13 +52,9 @@ static void	drawx(t_ftl *ftl, int x, int y, double *scale)
 		calczxy(&zx, &zy, cx, cy);
 		count++;
 	}
-	comp.x = x;
-	comp.y = y;
-	comp.cx = zx;
-	comp.cy = zy;
 	count = calccount(ftl, count, zx, zy);
 	if (count < ftl->detail && count != 0)
-		ft_putpixel(ftl, comp, count);
+		ft_putpixel(ftl, x, y, count);
 }
 
 static void	drawy(t_ftl *ftl, atomic_int *renderd, int y, double *scale)
