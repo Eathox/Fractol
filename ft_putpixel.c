@@ -18,13 +18,14 @@ unsigned int			*palettemaker(t_ftl *ftl)
 	int				i;
 	int				step;
 
-	i = 1;
+	i = 0;
 	step = 1;
 	palette = (unsigned int*)ft_memalloc(sizeof(unsigned int) * MAX_DETAIL);
 	while (i < MAX_DETAIL)
 	{
 		palette[i] += step;
-		step += 5;
+		if (step < 255)
+			step += step < 150 ? 5 : 1;
 		if (ftl->colors == 1 && i > 1)
 			palette[i] = (palette[i] << 8);
 		else if (ftl->colors == 2)
@@ -40,6 +41,7 @@ unsigned int			*palettemaker(t_ftl *ftl)
 		}
 		i++;
 	}
+	ft_printf("last color: %d\n", palette[MAX_DETAIL -1]);
 	return (palette);
 }
 
