@@ -6,7 +6,7 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/05/24 15:50:04 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 16:36:33 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ unsigned int			*palettemaker(t_ftl *ftl)
 	return (palette);
 }
 
-unsigned int			calc_interpolate(unsigned int color1, unsigned int color2, double frac)
+static unsigned int			calc_interpolate(unsigned int color1,
+	unsigned int color2, double frac)
 {
 	unsigned int		result;
 
@@ -51,8 +52,9 @@ unsigned int			calc_interpolate(unsigned int color1, unsigned int color2, double
 	return (result);
 }
 
-unsigned int			interpolate(unsigned int color1, unsigned int color2, double frac)
-{	
+static unsigned int			interpolate(unsigned int color1,
+	unsigned int color2, double frac)
+{
 	unsigned int		result;
 	unsigned int		rgb1;
 	unsigned int		rgb2;

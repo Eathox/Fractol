@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/05/21 16:58:23 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 13:31:48 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ static t_ftl	*freeret(t_ftl **ftl, char ***ftls, void ***fncs, char *message)
 	ft_memdel((void **)fncs);
 	ft_strarrdel(ftls);
 	if (*ftl == NULL)
-		ft_puterror(message);
+	{
+		if (ft_strequ("!USAGE", message))
+			ft_putusage();
+		else
+			ft_puterror(message);
+	}
 	return (*ftl);
 }
 
@@ -38,7 +43,6 @@ static char		**prepare(char ***ftls, void ***fncs)
 	(*fncs)[0] = &ft_juliadraw;
 	(*fncs)[1] = &ft_mandelbrotdraw;
 	(*fncs)[2] = &ft_tricorndraw;
-	//TODO ADD THHIRD SET
 	return (*ftls);
 }
 
@@ -67,5 +71,5 @@ t_ftl			*ft_getfractols(int ac, char **av, t_ftl **ftl)
 		str = av[i];
 		i++;
 	}
-	return (freeret(ftl, &ftls, &fncs, MESSAGE_USAGE));
+	return (freeret(ftl, &ftls, &fncs, "!USAGE"));
 }
