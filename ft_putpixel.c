@@ -6,13 +6,13 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/07 16:35:37 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 16:36:33 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static unsigned int			*palettemaker(t_ftl *ftl)
+unsigned int			*palettemaker(t_ftl *ftl)
 {
 	unsigned int	*palette;
 	int				i;
