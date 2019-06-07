@@ -6,24 +6,11 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/07 19:04:25 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/07 19:21:44 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static int	calccount(t_ftl *ftl, int count, float zx, float zy)
-{
-	float	log_zn;
-
-	if (count < ftl->detail)
-	{
-		log_zn = log(zx * zx + zy * zy) / 2;
-		log_zn = log(log_zn / log(2)) / log(2);
-		return ((count + 1) - log_zn);
-	}
-	return (count);
-}
 
 static void	calczxy(float *zx, float *zy, float cx, float cy)
 {
@@ -56,7 +43,6 @@ static void	drawx(t_ftl *ftl, int x, int y, float *scale)
 		calczxy(&zx, &zy, cx, cy);
 		count++;
 	}
-	count = calccount(ftl, count, zx, zy);
 	if (count < ftl->detail && count != 0)
 		ft_putpixel(ftl, x, y, count);
 }
