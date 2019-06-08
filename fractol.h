@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 13:18:45 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:22:38 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define POOL_SIZE			4
 # define MAX_DETAIL			150
 # define DETAIL_STEP		5
+# define COLOR_COUNT		6
 # define INTERPOLATE_FRACT	1.5
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))

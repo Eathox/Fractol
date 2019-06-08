@@ -66,7 +66,7 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 	if (keycode == KEY_C)
 	{
 		ft_memdel((void **)&(ftl->palette));
-		ftl->colors = ((ftl->colors + 1) > 5) ? 0 : ftl->colors + 1;
+		ftl->colors = ((ftl->colors + 1) > COLOR_COUNT) ? 0 : ftl->colors + 1;
 		ftl->palette = palettemaker(ftl);
 		if (ftl->palette == NULL)
 			return (closeret(ftl));
