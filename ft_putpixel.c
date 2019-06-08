@@ -6,13 +6,13 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/08 12:24:00 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:05:21 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static unsigned int			calc_interpolate(unsigned int color1,
+static unsigned int	calc_interpolate(unsigned int color1,
 	unsigned int color2, float frac)
 {
 	unsigned int		result;
@@ -21,7 +21,7 @@ static unsigned int			calc_interpolate(unsigned int color1,
 	return (result);
 }
 
-static unsigned int			interpolate(unsigned int color1,
+static unsigned int	interpolate(unsigned int color1,
 	unsigned int color2, float frac)
 {
 	unsigned int		result;
@@ -40,7 +40,7 @@ static unsigned int			interpolate(unsigned int color1,
 	return (result);
 }
 
-void		ft_putpixel(t_ftl *ftl, int x, int y, int count)
+void				ft_putpixel(t_ftl *ftl, int x, int y, int count)
 {
 	unsigned int		color;
 	unsigned int		color2;

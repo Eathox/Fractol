@@ -6,7 +6,7 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/08 12:41:51 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/08 13:02:12 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:06:31 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ unsigned int	changecolor(t_ftl *ftl, unsigned int color)
 	return (color);
 }
 
-unsigned int			*palettemaker(t_ftl *ftl)
+unsigned int	*palettemaker(t_ftl *ftl)
 {
 	unsigned int	*palette;
 	int				i;
@@ -45,7 +45,7 @@ unsigned int			*palettemaker(t_ftl *ftl)
 	{
 		palette[i] += step;
 		if (step < 255)
-			step += step < 150 ? 5 : 1;
+			step += (step < 150) ? 5 : 1;
 		if (ftl->colors != 0)
 			palette[i] = changecolor(ftl, palette[i]);
 		i++;
