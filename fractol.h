@@ -23,6 +23,7 @@
 # define POOL_SIZE	4
 # define MAX_DETAIL	150
 # define DETAIL_STEP	5
+# define COLOR_COUNT	6
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
 # define HELDOWN_ALT	(ftl->helddown & (1 << 2))

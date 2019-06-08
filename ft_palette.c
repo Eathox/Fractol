@@ -12,8 +12,10 @@
 
 #include "fractol.h"
 
-unsigned int	changecolor(t_ftl *ftl, unsigned int color)
+unsigned int			changecolor(t_ftl *ftl, unsigned int color)
 {
+	unsigned int	newcolor;
+
 	if (ftl->colors == 1)
 		color = (color << 8);
 	else if (ftl->colors == 2)
@@ -26,6 +28,13 @@ unsigned int	changecolor(t_ftl *ftl, unsigned int color)
 	{
 		color = (color << 16);
 		color += (color >> 8);
+	}
+	else if (ftl->colors == 6)
+	{
+		newcolor = color;
+		newcolor += (color << 8);
+		newcolor += (color << 16);
+		color = newcolor;
 	}
 	return (color);
 }
