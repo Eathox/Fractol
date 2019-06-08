@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 12:28:01 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:13:21 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@
 # include "libft/includes/libft.h"
 # include "keycodes.h"
 
-# define WINDOW_X	(1 << 11)
-# define WINDOW_Y	((1 << 11) / 2)
-# define POOL_SIZE	4
-# define MAX_DETAIL	150
-# define DETAIL_STEP	5
+# define WINDOW_X			(1 << 11)
+# define WINDOW_Y			((1 << 11) / 2)
+# define POOL_SIZE			4
+# define MAX_DETAIL			150
+# define DETAIL_STEP		5
+# define INTERPOLATE_FRACT	1.5
 # define HELDOWN_LEFTMOUSE	(ftl->helddown & (1 << 0))
 # define HELDOWN_RIGHTMOUSE	(ftl->helddown & (1 << 1))
-# define HELDOWN_ALT	(ftl->helddown & (1 << 2))
-# define HELDOWN_WIN	(ftl->helddown & (1 << 3))
-# define HELDOWN_CTRL	(ftl->helddown & (1 << 4))
-# define HELDOWN_SHIFT	(ftl->helddown & (1 << 5))
+# define HELDOWN_ALT		(ftl->helddown & (1 << 2))
+# define HELDOWN_WIN		(ftl->helddown & (1 << 3))
+# define HELDOWN_CTRL		(ftl->helddown & (1 << 4))
+# define HELDOWN_SHIFT		(ftl->helddown & (1 << 5))
 
 typedef struct	s_ftl
 {
