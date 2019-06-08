@@ -6,13 +6,13 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/08 12:41:51 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/08 13:06:31 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:23:25 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-unsigned int			changecolor(t_ftl *ftl, unsigned int color)
+unsigned int	changecolor(t_ftl *ftl, unsigned int color)
 {
 	unsigned int	newcolor;
 
