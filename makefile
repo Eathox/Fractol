@@ -41,7 +41,7 @@ NAME = fractol
 
 SRCS = getfractols addfractol ftldel ftlnew init eventclose eventkeydown \
 	eventkeyup eventmousedown eventmouseup eventmousemove mandelbrotdraw \
-	juliadraw putpixel zoom move tricorndraw putusage
+	juliadraw putpixel zoom move tricorndraw putusage palette
 SRCS := $(NAME).c $(SRCS:%=ft_%.c)
 
 SRCS := $(sort $(SRCS))

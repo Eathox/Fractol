@@ -12,39 +12,6 @@
 
 #include "fractol.h"
 
-unsigned int			*palettemaker(t_ftl *ftl)
-{
-	unsigned int	*palette;
-	int				i;
-	int				step;
-
-	i = 0;
-	step = 1;
-	palette = (unsigned int*)ft_memalloc(sizeof(unsigned int) * MAX_DETAIL);
-	while (i < MAX_DETAIL)
-	{
-		palette[i] += step;
-		if (step < 255)
-			step += step < 150 ? 5 : 1;
-		if (ftl->colors == 1 && i > 1)
-			palette[i] = (palette[i] << 8);
-		else if (ftl->colors == 2)
-			palette[i] = (palette[i] << 16);
-		else if (ftl->colors == 3)
-			palette[i] += (palette[i] << 8);
-		else if (ftl->colors == 4)
-			palette[i] += (palette[i] << 16);
-		else if (ftl->colors == 5)
-		{
-			palette[i] = (palette[i] << 16);
-			palette[i] += (palette[i] >> 8);
-		}
-		i++;
-	}
-	ft_printf("last color: %d\n", palette[MAX_DETAIL -1]);
-	return (palette);
-}
-
 static unsigned int			calc_interpolate(unsigned int color1,
 	unsigned int color2, float frac)
 {
