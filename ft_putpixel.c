@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_putpixel.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/08 13:12:52 by pholster      ########   odam.nl         */
+/*   Created: 2019/05/16 13:57:21 by pholster       #+#    #+#                */
+/*   Updated: 2019/06/08 13:35:27 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

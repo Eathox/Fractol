@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_tricorndraw.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
+/*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/06 11:03:10 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/08 13:19:36 by pholster      ########   odam.nl         */
+/*   Created: 2019/06/06 11:03:10 by pholster       #+#    #+#                */
+/*   Updated: 2019/06/08 13:35:26 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
