@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 12:55:34 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 12:56:29 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 		return (drawret(ftl));
 	if (keycode == KEY_C)
 	{
-		ft_memdel(&(ftl->palette));
+		ft_memdel((void **)&(ftl->palette));
 		ftl->colors = ((ftl->colors + 1) > 5) ? 0 : ftl->colors + 1;
 		ftl->palette = palettemaker(ftl);
 		if (ftl->palette == NULL)
