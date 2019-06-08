@@ -6,11 +6,23 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/07 19:21:45 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 12:35:27 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void	drawinfo(t_ftl *ftl)
+{
+	int	y;
+
+	y = -14;
+	ft_puttext(ftl, 8, y += 18, "ZOOM: SCROLL WHEEL");
+	ft_puttext(ftl, 8, y += 18, "MOVE: ARROW KEYS");
+	ft_puttext(ftl, 8, y += 18, "DETAIL: + OR -");
+	ft_puttext(ftl, 8, y += 18, "TOGGLE COMPLEX: SPACE");
+	ft_puttext(ftl, 8, y += 18, "COLOR: C");
+}
 
 static void	calczxy(float *zx, float *zy, float cx, float cy)
 {
@@ -82,5 +94,6 @@ void		ft_juliadraw(t_ftl *ftl)
 	while (atomic_load(&renderd) < WINDOW_Y)
 		;
 	mlx_put_image_to_window(ftl->mlx, ftl->mlx_window, ftl->mlx_image, 0, 0);
-	ft_bzero(ftl->mlx_image_addr, (WINDOW_X * WINDOW_Y) * 4);
+	drawinfo(ftl);
+	ft_bzero(ftl->mlx_image_addr, (WINDOW_Y * WINDOW_X) * 4);
 }

@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/07 17:04:25 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 12:55:34 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 static int	drawret(t_ftl *ftl)
 {
 	ftl->fractol_fnc(ftl);
+	return (0);
+}
+
+static int	closeret(t_ftl *ftl)
+{
+	mlx_destroy_window(ftl->mlx, ftl->mlx_window);
+	ft_eventclose(ftl);
 	return (0);
 }
 
@@ -39,11 +46,7 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 		return (0);
 	togglehelddown(keycode, ftl);
 	if ((HELDOWN_CTRL && keycode == KEY_C) || keycode == KEY_ESCAPE)
-	{
-		mlx_destroy_window(ftl->mlx, ftl->mlx_window);
-		ft_eventclose(ftl);
-		return (0);
-	}
+		return (closeret(ftl));
 	if (keycode == KEY_EQUALS || keycode == KEY_MINUS)
 	{
 		ftl->detail += (keycode == KEY_EQUALS) ? DETAIL_STEP : -DETAIL_STEP;
@@ -54,8 +57,11 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 		return (drawret(ftl));
 	if (keycode == KEY_C)
 	{
+		ft_memdel(&(ftl->palette));
 		ftl->colors = ((ftl->colors + 1) > 5) ? 0 : ftl->colors + 1;
 		ftl->palette = palettemaker(ftl);
+		if (ftl->palette == NULL)
+			return (closeret(ftl));
 		return (drawret(ftl));
 	}
 	return (0);
