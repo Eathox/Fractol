@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 00:07:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/07 19:13:33 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 12:28:01 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct	s_ftl
 	struct s_ftl	*head;
 }				t_ftl;
 
+void			ft_puttext(t_ftl *ftl, int x, int y, char *str);
 int				ft_putusage(void);
 int				ft_move(t_ftl *ftl, int keycode);
 int				ft_zoom(t_ftl *ftl, int mousecode, int x, int y);

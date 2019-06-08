@@ -6,7 +6,7 @@
 /*   By: wvan-dam <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 13:57:21 by wvan-dam       #+#    #+#                */
-/*   Updated: 2019/06/07 19:04:25 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 12:24:00 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ unsigned int			*palettemaker(t_ftl *ftl)
 
 	i = 0;
 	step = 1;
-	palette = (unsigned int*)ft_memalloc(sizeof(unsigned int) * MAX_DETAIL);
+	palette = (unsigned int *)ft_memalloc(sizeof(unsigned int) * MAX_DETAIL);
 	while (i < MAX_DETAIL)
 	{
 		palette[i] += step;
 		if (step < 255)
-			step += step < 150 ? 5 : 1;
+			step += (step < 150) ? 5 : 1;
 		if (ftl->colors == 1 && i > 1)
 			palette[i] = (palette[i] << 8);
 		else if (ftl->colors == 2)

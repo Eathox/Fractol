@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_eventmousemove.c                                :+:    :+:            */
+/*   ft_puttext.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 12:39:30 by pholster      ########   odam.nl         */
+/*   Created: 2019/06/08 12:27:22 by pholster       #+#    #+#                */
+/*   Updated: 2019/06/08 12:36:57 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int			ft_eventmousemove(int x, int y, t_ftl *ftl)
+void	ft_puttext(t_ftl *ftl, int x, int y, char *str)
 {
-	if (ftl->active == FALSE || x > WINDOW_X || x < 0 || y > WINDOW_Y || y < 0)
-		return (0);
-	if (ftl->locked == FALSE && ft_strequ(ftl->name, "Julia"))
-	{
-		ftl->cx = (((float)x * 3.5) / WINDOW_X) - 2.5;
-		ftl->cy = ((float)y / WINDOW_Y);
-		ftl->fractol_fnc(ftl);
-	}
-	return (0);
+	mlx_string_put(ftl->mlx, ftl->mlx_window, x, y, 0xFFFFFF, str);
 }
