@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 12:58:21 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 12:37:04 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:19:41 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	drawinfo(t_ftl *ftl)
 	y = -14;
 	ft_puttext(ftl, 8, y += 18, "ZOOM: SCROLL WHEEL");
 	ft_puttext(ftl, 8, y += 18, "MOVE: ARROW KEYS");
+	ft_puttext(ftl, 8, y += 18, "RESER POS: R");
 	ft_puttext(ftl, 8, y += 18, "DETAIL: + OR -");
 	ft_puttext(ftl, 8, y += 18, "COLOR: C");
 }

@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 15:16:34 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 12:56:29 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:18:55 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static int	closeret(t_ftl *ftl)
 	mlx_destroy_window(ftl->mlx, ftl->mlx_window);
 	ft_eventclose(ftl);
 	return (0);
+}
+
+static int	resetpos(t_ftl *ftl)
+{
+	ft_ftlsetscale(ftl);
+	return (drawret(ftl));
 }
 
 static int	togglehelddown(int keycode, t_ftl *ftl)
@@ -45,6 +51,8 @@ int			ft_eventkeydown(int keycode, t_ftl *ftl)
 	if (ftl->active == FALSE)
 		return (0);
 	togglehelddown(keycode, ftl);
+	if (keycode == KEY_R)
+		return (resetpos(ftl));
 	if ((HELDOWN_CTRL && keycode == KEY_C) || keycode == KEY_ESCAPE)
 		return (closeret(ftl));
 	if (keycode == KEY_EQUALS || keycode == KEY_MINUS)

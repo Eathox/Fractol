@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 11:38:14 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 12:56:37 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 13:19:07 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,6 @@ static t_ftl	*freeret(t_ftl *ftl)
 	return (NULL);
 }
 
-static void		setscale(t_ftl *ftl)
-{
-	ftl->scalex = WINDOW_X;
-	ftl->scaley = WINDOW_Y;
-	if (WINDOW_X < WINDOW_Y)
-	{
-		ftl->scaley = (ftl->scaley / ftl->scalex);
-		ftl->scalex = 1;
-	}
-	else
-	{
-		ftl->scalex = (ftl->scalex / ftl->scaley);
-		ftl->scaley = 1;
-	}
-	ftl->posx = -(ftl->scalex * 2);
-	ftl->posy = -(ftl->scaley * 2);
-	ftl->zoom = 4.2;
-}
-
 static int		setdefualt(t_ftl *ftl)
 {
 	ftl->active = TRUE;
@@ -48,7 +29,7 @@ static int		setdefualt(t_ftl *ftl)
 	ftl->palette = palettemaker(ftl);
 	if (ftl->palette == NULL)
 		return (FALSE);
-	setscale(ftl);
+	ft_ftlsetscale(ftl);
 	return (TRUE);
 }
 
