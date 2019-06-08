@@ -6,7 +6,7 @@
 /*   By: pholster <pholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 11:38:14 by pholster       #+#    #+#                */
-/*   Updated: 2019/06/08 12:52:36 by pholster      ########   odam.nl         */
+/*   Updated: 2019/06/08 12:56:37 by pholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_ftl	*freeret(t_ftl *ftl)
 {
 	mlx_destroy_window(ftl->mlx, ftl->mlx_window);
 	mlx_destroy_image(ftl->mlx, ftl->mlx_image);
-	ft_memdel(&(ftl->palette));
+	ft_memdel((void **)&(ftl->palette));
 	free(ftl);
 	return (NULL);
 }
