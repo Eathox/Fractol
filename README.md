@@ -12,6 +12,12 @@ A fractal renderer it includes:
 Compile the program by: `Make`\
 Run the program by: `./fractol <name of fractol>`
 
+## Requirements
+
+  1. C compiler
+  2. Make
+  3. X11
+
 ## Controls
 
 * Zoom: `scroll wheel`
@@ -21,8 +27,9 @@ Run the program by: `./fractol <name of fractol>`
 * Decrease Detail: `-`
 * Cycle Color: `C`
 
-## Requirements
+## Screen resolution
 
-  1. C compiler
-  2. Make
-  3. X11
+You can tweak the resolution by editing:\
+`# define WINDOW_X`\
+`# define WINDOW_Y`\
+Present in `fractol.h`
