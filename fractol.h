@@ -18,8 +18,8 @@
 # include "libft/includes/libft.h"
 # include "keycodes.h"
 
-# define WINDOW_X			(1 << 11)
-# define WINDOW_Y			((1 << 11) / 2)
+# define WINDOW_X			1280
+# define WINDOW_Y			720
 # define POOL_SIZE			4
 # define MAX_DETAIL			150
 # define DETAIL_STEP		5
