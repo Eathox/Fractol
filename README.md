@@ -1,4 +1,4 @@
-# Mod1
+# Fractol
 
 A fractal renderer it includes:
 
